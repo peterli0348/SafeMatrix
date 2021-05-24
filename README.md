@@ -40,7 +40,7 @@ So if A is empty then A[ 0 ][ 0 ] = INT_MAX and if A is full then A[ m - 1 ][ n 
 
 1. VNT(int m, int n) will create an m x n VNT object 
 
-e.g. `VNT A(5,7);`
+    e.g. `VNT A(5,7);`
 
 2. `A.add(25);` will add 25 to a non-full VNT
 
