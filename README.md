@@ -15,6 +15,7 @@ Project is for CSCI381 Advanced OOP in C++
 * **Function Overload**
 * **Well documented Code**
 * **Debug logs**
+* **Statistic Collection**
 * **File Manipulation**
 
 ## Requirements for Block (Memory Allocation)
