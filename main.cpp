@@ -35,7 +35,8 @@
  */
 
 #include <ctime>
-#include "SafeMatrix.h"
+#include <fstream>
+#include "VNT.h"
 using namespace std;
 
 template <typename T>
@@ -100,7 +101,8 @@ int main() {
 
     SafeArray<int> array1{2,3,4,5,6};
 
-    std::cout << array0 << std::endl << "-" << std::endl << array1 << std::endl << "=" << std::endl;
+    std::cout << array0 << std::endl << "-" << std::endl
+        << array1 << std::endl << "=" << std::endl;
     array1 = array0 - array1;
     std::cout << array1 << std::endl;
 
@@ -114,5 +116,77 @@ int main() {
     matrix1 = matrix0 * matrix1;
     std::cout << matrix1 << std::endl;
 
+/**
+ * Peter Li (23375692)
+ * CSCI 381 Advance C++
+ * Project 3: VNT
+ * Due April 3rd, 2020 before 11:59PM
+ * Cut-off April 13th, 2020 before 11:59PM
+ * -10 points for each day late
+ *
+ * We want a class called VNT which is going to handle an m by n matrix
+ * Entries of each row are in sorted order from left to right
+ * Entries of each column are in sorted order from top to bottom
+ * Entries of a VNT may be INT_MAX , which we treat as nonexistent elements
+ * Thus, a VNT can be used to hold r ≤ mn integers
+ *
+ * We want the class to be able to do the following things:
+ * 1.   If A is a VNT object then A[i][j] is the i,j th element of the underlying 2 dimensional Matrix
+ *      So if A is empty then A[0][[0] = INT_MAX
+ *      and if A is full then A[m-1][n-1] < INT_MAX
+ *
+ * 2.   VNT(int m, int n) will create an m x n VNT object     e.g. VNT A(5,7)
+ *
+ * 3.   A.getMin() will extract the smallest element for A and leave A a VNT
+ *
+ * 4.   A.sort(int k[], int size)  will sort the n x n numbers in k using A
+ *      and not calling any sort routine as a subroutine
+ *
+ * 5.   A.find(int i) will return true if i is in A and false otherwise
+ *
+ * CONSTRAINTS:
+ * 1.   function add() should work in time proportional to m+n
+ * 2.   function getMin() should work in time proportional to m+n
+ * 3.   function sort() should work in time proportional to n^3
+ * 4.   function find() should work in time proportional to m+n
+ */
+
+    std::ofstream outFile;
+    outFile.open("VNT_output.txt");
+
+    VNT<int> table(3, 99);
+
+    outFile << "VNT 3x3 with INT_MAX = 99" << std::endl << table << std::endl;
+
+    table.add(12);
+    outFile << "add()" << std::endl << table << std::endl;
+    table.add(87);
+    outFile << "add()" << std::endl << table << std::endl;
+    table.add(38);
+    outFile << "add()" << std::endl << table << std::endl;
+    table.add(3);
+    outFile << "add()" << std::endl << table << std::endl;
+    table.add(87);
+    outFile << "add()" << std::endl << table << std::endl;
+    table.add(12);
+    outFile << "add()" << std::endl << table << std::endl;
+    table.add(12);
+    outFile << "add()" << std::endl << table << std::endl;
+    table.add(74);
+    outFile << "add()" << std::endl << table << std::endl;
+    table.add(1);
+    outFile << "add()" << std::endl << table << std::endl;
+
+    outFile << "getMin()" << std::endl << table.getMin() << std::endl << std::endl;
+
+    // n x n int[] should not contain values higher than VNT._MAX
+    int sortF[9] = {12, 73, 38, 88, 8, 4, 57, 53, 1};
+    VNT<int> sortedTable = table.sort(sortF, 9);
+    outFile << "sort()" << std::endl << sortedTable << std::endl;
+
+    int findElement = 88;
+    outFile << "find(" << findElement << ")" << std::endl << (sortedTable.find(findElement) ? "true" : "false") << std::endl;
+
+    outFile.close();
     return 0;
 }
