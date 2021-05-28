@@ -137,7 +137,7 @@ So if A is empty then A[ 0 ][ 0 ] = INT_MAX and if A is full then A[ m - 1 ][ n 
         
 > Constructor message ----------------
 > 
-> Request size:           49(+6)
+> Request size:           40(+6)
 > 
 > Block size:             70
 > 
@@ -148,7 +148,7 @@ So if A is empty then A[ 0 ][ 0 ] = INT_MAX and if A is full then A[ m - 1 ][ n 
 > Search count:           2
 > 
 > Search count avg:       2
-> 
+>
 > Request count:          1
 > 
 > Failure count:          0
@@ -156,21 +156,21 @@ So if A is empty then A[ 0 ][ 0 ] = INT_MAX and if A is full then A[ m - 1 ][ n 
 > Success rate:           1
 > 
 > Failure rate:           0
-> 
+>
 > Constructor message ----------------
 > 
-> Request size:           23(+6)
+> Request size:           56(+6)
 > 
-> Block size:             29
+> Block size:             70
 > 
-> Block count:            101
+> Block count:            100
 > 
-> Split count:            1
+> Split count:            0
 > 
 > Search count:           2
 > 
 > Search count avg:       2
-> 
+>
 > Request count:          2
 > 
 > Failure count:          0
@@ -178,3 +178,15 @@ So if A is empty then A[ 0 ][ 0 ] = INT_MAX and if A is full then A[ m - 1 ][ n 
 > Success rate:           1
 > 
 > Failure rate:           0
+>
+> Destructor message ----------------
+> 
+> Block count:            99
+> 
+> Coalesce count:         1
+>
+> Destructor message ----------------
+> 
+> Block count:            98
+> 
+> Coalesce count:         2
